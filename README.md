@@ -1,16 +1,1325 @@
-## Hi there 👋
 
-<!--
-**KropixWEB/kropixWEB** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kropix — Nowoczesne strony internetowe</title>
 
-Here are some ideas to get you started:
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+html { scroll-padding-top: 95px; }
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #050b18;
+    color: #fff;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        radial-gradient(circle at 15% 15%, rgba(0,195,255,.20), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(150,70,255,.20), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(0,255,190,.12), transparent 30%),
+        linear-gradient(135deg,#050b18,#071528,#0a0920);
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    opacity: .10;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(80,180,255,.3) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(80,180,255,.3) 1px,transparent 1px);
+    background-size: 45px 45px;
+}
+
+.circle {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(70px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.circle.one {
+    width: 280px;
+    height: 280px;
+    background: #0077ff;
+    left: -120px;
+    top: 180px;
+    opacity: .18;
+}
+
+.circle.two {
+    width: 320px;
+    height: 320px;
+    background: #9b00ff;
+    right: -150px;
+    top: 500px;
+    opacity: .15;
+}
+
+.circle.three {
+    width: 250px;
+    height: 250px;
+    background: #00e5c3;
+    left: 45%;
+    bottom: -100px;
+    opacity: .12;
+}
+
+/* NAWIGACJA */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px 7%;
+    background: rgba(3,9,22,.90);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(70,190,255,.25);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    background: linear-gradient(90deg,#43cfff,#7c6cff,#00f0c0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.nav-links {
+    display: flex;
+    gap: 22px;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: #dceeff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: .25s;
+}
+
+.nav-links a:hover {
+    color: #50d7ff;
+    text-shadow: 0 0 15px #00cfff;
+}
+
+/* SEKCJE */
+
+section {
+    padding: 100px 8% 75px;
+    position: relative;
+}
+
+#start {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 130px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 42px;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    background: linear-gradient(90deg,#4bdcff,#8c74ff,#00f0c0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.section-description {
+    max-width: 760px;
+    margin: 0 auto 35px;
+    text-align: center;
+    color: #a9bed4;
+    line-height: 1.8;
+}
+
+.section-line {
+    width: 90px;
+    height: 4px;
+    border-radius: 10px;
+    margin: 0 auto 45px;
+    background: linear-gradient(90deg,#00cfff,#895cff,#00f0c0);
+    box-shadow: 0 0 20px rgba(0,200,255,.6);
+}
+
+.separator {
+    width: 100%;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.separator::before {
+    content: "";
+    width: 75%;
+    height: 1px;
+    background: linear-gradient(90deg,transparent,#00cfff,#855cff,#00f0c0,transparent);
+    box-shadow: 0 0 15px rgba(0,200,255,.5);
+}
+
+.separator span {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #081326;
+    border: 1px solid #4bcfff;
+    color: #7ee8ff;
+    box-shadow: 0 0 15px rgba(0,200,255,.5);
+}
+
+/* START */
+
+.hero { max-width: 1100px; }
+
+.badge {
+    display: inline-block;
+    padding: 9px 17px;
+    border-radius: 30px;
+    border: 1px solid rgba(70,210,255,.35);
+    background: rgba(0,180,255,.08);
+    color: #62dbff;
+    margin-bottom: 22px;
+    font-size: 13px;
+}
+
+.hero h1 {
+    font-size: clamp(48px,7vw,88px);
+    line-height: 1;
+    margin-bottom: 25px;
+    background: linear-gradient(90deg,#fff,#54d8ff,#8e70ff,#00f0c0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero h2 {
+    font-size: 24px;
+    color: #a9c9e4;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    max-width: 760px;
+    color: #a8b9cd;
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 35px;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 25px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.btn-primary {
+    color: white;
+    background: linear-gradient(90deg,#008cff,#695cff,#00dcb7);
+    box-shadow: 0 0 25px rgba(0,150,255,.3);
+}
+
+.btn-secondary {
+    color: #dff8ff;
+    border: 1px solid rgba(70,210,255,.4);
+    background: rgba(20,80,130,.18);
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,180,255,.25);
+}
+
+/* KARTY */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 22px;
+}
+
+.card {
+    padding: 28px;
+    border-radius: 20px;
+    background: linear-gradient(145deg,rgba(15,50,85,.75),rgba(31,15,65,.65));
+    border: 1px solid rgba(70,190,255,.22);
+    box-shadow: 0 15px 40px rgba(0,0,0,.2);
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: #43cfff;
+    box-shadow: 0 15px 45px rgba(0,180,255,.16);
+}
+
+.card-icon {
+    font-size: 35px;
+    margin-bottom: 18px;
+}
+
+.card h3 {
+    margin-bottom: 12px;
+    color: #e9faff;
+}
+
+.card p {
+    color: #a8bdd2;
+    line-height: 1.7;
+}
+
+.card ul {
+    margin-top: 15px;
+    padding-left: 18px;
+    color: #b4c7d8;
+}
+
+.card li { margin: 7px 0; }
+
+.highlight {
+    color: #58dcff !important;
+    font-weight: bold;
+}
+
+/* O MNIE */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 35px;
+    align-items: center;
+}
+
+.about-box {
+    padding: 35px;
+    border-radius: 24px;
+    background: rgba(10,30,55,.65);
+    border: 1px solid rgba(75,205,255,.2);
+}
+
+.about-box p {
+    color: #b0c3d5;
+    line-height: 1.9;
+    margin-bottom: 16px;
+}
+
+.about-visual {
+    min-height: 350px;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 25px;
+    border: 1px solid rgba(80,210,255,.35);
+    background: #071a30;
+    box-shadow: 0 0 50px rgba(0,150,255,.16);
+}
+
+.about-visual img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+    object-fit: cover;
+    transition: transform .5s ease;
+}
+
+.about-visual:hover img { transform: scale(1.05); }
+
+.about-visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(145deg,rgba(0,180,255,.12),transparent 45%,rgba(110,50,255,.22));
+}
+
+/* STATYSTYKI */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 18px;
+    margin-top: 35px;
+}
+
+.stat {
+    text-align: center;
+    padding: 28px 15px;
+    border-radius: 18px;
+    background: rgba(15,35,65,.6);
+    border: 1px solid rgba(70,200,255,.16);
+}
+
+.stat strong {
+    display: block;
+    font-size: 30px;
+    margin-bottom: 8px;
+    background: linear-gradient(90deg,#46d9ff,#8c70ff,#00efc0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.stat span { color: #9db4c9; }
+
+/* ZDJĘCIA I GALERIA */
+
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 22px;
+    margin-top: 35px;
+}
+
+.photo-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 230px;
+    border-radius: 20px;
+    border: 1px solid rgba(70,190,255,.3);
+    background: #071528;
+    box-shadow: 0 12px 35px rgba(0,0,0,.25);
+    transition: transform .3s, box-shadow .3s;
+}
+
+.photo-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0,160,255,.2);
+}
+
+.photo-card img {
+    display: block;
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    transition: transform .5s;
+}
+
+.photo-card:hover img { transform: scale(1.06); }
+
+.photo-caption {
+    position: absolute;
+    inset: auto 0 0;
+    padding: 35px 20px 18px;
+    background: linear-gradient(transparent,rgba(3,9,22,.96));
+}
+
+.photo-caption h3 {
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.photo-caption p {
+    color: #c2d6e9;
+    font-size: 14px;
+}
+
+.section-photo {
+    width: 100%;
+    max-height: 350px;
+    display: block;
+    object-fit: cover;
+    border-radius: 22px;
+    border: 1px solid rgba(70,190,255,.3);
+    box-shadow: 0 15px 40px rgba(0,0,0,.25);
+    margin-bottom: 30px;
+}
+
+/* WSPÓŁPRACA */
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 18px;
+}
+
+.step {
+    padding: 30px 24px;
+    border-radius: 20px;
+    background: linear-gradient(145deg,rgba(0,150,255,.10),rgba(120,60,255,.12));
+    border: 1px solid rgba(80,190,255,.2);
+}
+
+.step-number {
+    font-size: 42px;
+    font-weight: 900;
+    color: #52d8ff;
+    opacity: .8;
+    margin-bottom: 15px;
+}
+
+.step h3 { margin-bottom: 12px; }
+
+.step p {
+    color: #a5b9cc;
+    line-height: 1.7;
+}
+
+/* CENNIK */
+
+.prices {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 25px;
+}
+
+.price-card {
+    padding: 32px;
+    border-radius: 23px;
+    background: linear-gradient(150deg,rgba(13,42,72,.85),rgba(35,15,70,.75));
+    border: 1px solid rgba(80,190,255,.25);
+    transition: .3s;
+}
+
+.price-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(0,170,255,.18);
+}
+
+.price-card.featured {
+    border: 1px solid #795cff;
+    box-shadow: 0 0 35px rgba(120,70,255,.16);
+}
+
+.price-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    background: linear-gradient(90deg,#008cff,#805cff);
+    margin-bottom: 18px;
+}
+
+.price-card h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.price {
+    font-size: 29px;
+    font-weight: bold;
+    margin: 15px 0 25px;
+    background: linear-gradient(90deg,#4edbff,#9a72ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.price-card ul { list-style: none; }
+
+.price-card li {
+    color: #b5c7d8;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(100,180,255,.12);
+}
+
+.price-card li::before {
+    content: "✓";
+    color: #00e7bf;
+    margin-right: 9px;
+}
+
+/* FAQ */
+
+.faq {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 18px;
+}
+
+.faq-item {
+    padding: 25px;
+    border-radius: 18px;
+    background: rgba(15,35,65,.65);
+    border: 1px solid rgba(70,190,255,.2);
+}
+
+.faq-item h3 {
+    margin-bottom: 10px;
+    color: #e5f8ff;
+}
+
+.faq-item p {
+    color: #a8bdd2;
+    line-height: 1.8;
+}
+
+/* REGULAMIN */
+
+.rules {
+    max-width: 950px;
+    margin: auto;
+    padding: 35px;
+    border-radius: 22px;
+    background: rgba(10,30,55,.65);
+    border: 1px solid rgba(75,205,255,.2);
+}
+
+.rules h3 {
+    margin-top: 20px;
+    margin-bottom: 8px;
+    color: #65dcff;
+}
+
+.rules h3:first-child { margin-top: 0; }
+
+.rules p {
+    color: #b0c3d5;
+    line-height: 1.8;
+}
+
+/* KONTAKT */
+
+.contact-box {
+    max-width: 850px;
+    margin: auto;
+    text-align: center;
+    padding: 55px 35px;
+    border-radius: 28px;
+    background: linear-gradient(145deg,rgba(0,150,255,.12),rgba(120,60,255,.15));
+    border: 1px solid rgba(80,190,255,.3);
+    box-shadow: 0 15px 45px rgba(0,0,0,.2);
+}
+
+.contact-box h2 {
+    font-size: 35px;
+    margin-bottom: 15px;
+    background: linear-gradient(90deg,#4bdcff,#8c74ff,#00f0c0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.contact-box p {
+    color: #b0c3d5;
+    margin-bottom: 25px;
+}
+
+.email {
+    display: inline-block;
+    padding: 15px 24px;
+    border-radius: 12px;
+    background: linear-gradient(90deg,#008cff,#695cff,#00dcb7);
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.email:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,180,255,.25);
+}
+
+.copy-row {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+#emailAddress {
+    color: #dceeff;
+    font-weight: bold;
+}
+
+#copyMessage {
+    min-height: 24px;
+    font-size: 13px;
+    margin-top: 10px;
+    color: #66e6c9;
+}
+
+/* STOPKA */
+
+footer {
+    text-align: center;
+    padding: 35px 8%;
+    color: #91a8be;
+    border-top: 1px solid rgba(70,190,255,.18);
+    background: rgba(3,9,22,.55);
+}
+
+footer strong { color: #62dbff; }
+
+/* REGULAMIN PRZED WEJŚCIEM */
+
+#regulaminStart {
+    min-height: 100vh;
+    padding: 35px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(3,9,22,.98);
+}
+
+.regulamin-start-box {
+    width: 100%;
+    max-width: 850px;
+    padding: 40px;
+    border-radius: 25px;
+    background: linear-gradient(145deg,rgba(15,50,85,.85),rgba(31,15,65,.85));
+    border: 1px solid rgba(70,190,255,.3);
+    box-shadow: 0 20px 70px rgba(0,0,0,.35);
+}
+
+.regulamin-start-box h1 {
+    font-size: 34px;
+    margin-bottom: 15px;
+    background: linear-gradient(90deg,#4bdcff,#8c74ff,#00f0c0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.regulamin-start-box .intro {
+    color: #b0c3d5;
+    margin-bottom: 25px;
+}
+
+.start-rules {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 20px 25px;
+    border-radius: 15px;
+    background: rgba(0,0,0,.16);
+    border: 1px solid rgba(70,190,255,.16);
+}
+
+.start-rules ol { padding-left: 22px; }
+
+.start-rules li {
+    color: #c3d4e5;
+    padding: 7px 0;
+    line-height: 1.7;
+}
+
+.accept-area { margin-top: 25px; }
+
+.accept-label {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    color: #c8d9e7;
+    cursor: pointer;
+}
+
+#acceptCheckbox {
+    width: 18px;
+    height: 18px;
+    margin-top: 4px;
+    accent-color: #08bfff;
+    flex-shrink: 0;
+}
+
+#acceptButton {
+    margin-top: 20px;
+    width: 100%;
+    border: 0;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: #263449;
+    cursor: not-allowed;
+    transition: .3s;
+}
+
+#acceptButton.active {
+    cursor: pointer;
+    background: linear-gradient(90deg,#008cff,#795cff,#00d8b5);
+    box-shadow: 0 0 25px rgba(0,160,255,.25);
+}
+
+#mainPage { display: none; }
+
+/* TELEFONY I TABLETY */
+
+@media(max-width: 1000px) {
+    .cards, .prices {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+    }
+
+    .steps {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+    }
+
+    .stats {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+    }
+
+    .about-grid { grid-template-columns: 1fr; }
+
+    nav {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+
+    .nav-links { gap: 12px; }
+}
+
+@media(max-width: 750px) {
+    section { padding: 85px 5% 55px; }
+
+    .section-title { font-size: 34px; }
+
+    .cards, .prices, .steps, .faq, .photo-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 { font-size: 52px; }
+
+    .contact-box { padding: 35px 22px; }
+
+    .regulamin-start-box { padding: 25px; }
+
+    .about-box, .rules { padding: 25px; }
+
+    .photo-card img { height: 240px; }
+}
+
+@media(max-width: 500px) {
+    nav { min-height: 68px; }
+
+    .logo { font-size: 21px; }
+
+    .nav-links { display: none; }
+
+    .hero h1 { font-size: 43px; }
+
+    .hero h2 { font-size: 20px; }
+
+    .hero p { font-size: 16px; }
+
+    .stats { grid-template-columns: 1fr; }
+
+    .buttons { flex-direction: column; }
+
+    .btn { text-align: center; }
+
+    .regulamin-start-box h1 { font-size: 28px; }
+
+    .start-rules { padding: 15px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="circle one"></div>
+<div class="circle two"></div>
+<div class="circle three"></div>
+
+<!-- REGULAMIN PRZED WEJŚCIEM -->
+
+<div id="regulaminStart">
+    <div class="regulamin-start-box">
+        <h1>Regulamin Kropix</h1>
+
+        <p class="intro">
+            Przed przejściem do strony zapoznaj się z podstawowymi zasadami współpracy.
+        </p>
+
+        <div class="start-rules">
+            <ol>
+                <li>Kropix oferuje projektowanie i tworzenie stron internetowych zgodnie z ustaleniami z klientem.</li>
+                <li>Cena zależy od zakresu projektu, jego funkcji oraz stopnia zaawansowania.</li>
+                <li>Dodatkowe zmiany lub funkcje niewchodzące w ustalony zakres mogą wiązać się z dodatkową opłatą.</li>
+                <li>Klient powinien dostarczyć materiały potrzebne do wykonania strony, takie jak teksty, zdjęcia, logo lub dane kontaktowe.</li>
+                <li>Przed publikacją klient ma możliwość zapoznania się z projektem i zgłoszenia uzgodnionych poprawek.</li>
+                <li>Domena i hosting mogą być kupowane osobno, jeśli nie zostały uwzględnione w ustalonej cenie.</li>
+                <li>Szczegółowe warunki konkretnego zlecenia powinny zostać ustalone indywidualnie przed rozpoczęciem pracy.</li>
+                <li>Niniejsze informacje nie wyłączają praw klienta wynikających z obowiązujących przepisów prawa.</li>
+            </ol>
+        </div>
+
+        <div class="accept-area">
+            <label class="accept-label">
+                <input type="checkbox" id="acceptCheckbox">
+                <span>Zapoznałem/am się z regulaminem i chcę przejść na stronę Kropix.</span>
+            </label>
+
+            <button id="acceptButton" type="button">
+                Akceptuję i przechodzę do strony
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- GŁÓWNA STRONA -->
+
+<div id="mainPage">
+
+<nav>
+    <div class="logo">KROPIX</div>
+
+    <ul class="nav-links">
+        <li><a href="#start">Start</a></li>
+        <li><a href="#omnie">O mnie</a></li>
+        <li><a href="#oferta">Oferta</a></li>
+        <li><a href="#wspolpraca">Współpraca</a></li>
+        <li><a href="#cennik">Cennik</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+</nav>
+
+<!-- START -->
+
+<section id="start">
+    <div class="hero">
+        <span class="badge">✦ Nowoczesne strony internetowe</span>
+        <h1>KROPIX</h1>
+        <h2>Tworzę strony, które pomagają pokazać Twój biznes w internecie.</h2>
+
+        <p>
+            Projektuję nowoczesne, przejrzyste i responsywne strony internetowe
+            dla małych firm, usługodawców i osób, które chcą profesjonalnie
+            zaprezentować swoją działalność.
+        </p>
+
+        <div class="buttons">
+            <a href="#oferta" class="btn btn-primary">Zobacz ofertę</a>
+            <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=nowakquest%40gmail.com&su=Zapytanie%20o%20stron%C4%99%20Kropix&body=Cze%C5%9B%C4%87!%0A%0AChcia%C5%82bym%20zapyta%C4%87%20o%20stworzenie%20strony%20internetowej.%0A%0AM%C3%B3j%20pomys%C5%82%3A%20"
+                class="btn btn-secondary"
+                target="_blank"
+                rel="noopener noreferrer">
+                Skontaktuj się
+            </a>
+        </div>
+    </div>
+</section>
+
+<div class="separator"><span>✦</span></div>
+
+<!-- O MNIE -->
+
+<section id="omnie">
+    <h2 class="section-title">O mnie</h2>
+    <p class="section-description">
+        Poznaj Kropix i sposób, w jaki podchodzę do tworzenia stron internetowych.
+    </p>
+    <div class="section-line"></div>
+
+    <div class="about-grid">
+        <div class="about-box">
+            <p><span class="highlight">Kropix</span> to projekty stron internetowych, które łączą nowoczesny wygląd z przejrzystą strukturą.</p>
+            <p>Zależy mi na tym, aby każda strona była dopasowana do potrzeb właściciela, czytelna dla odwiedzających i wygodna w obsłudze.</p>
+            <p>Każdy projekt omawiam indywidualnie, aby ustalić jego zakres, wygląd i najważniejsze funkcje.</p>
+            <a href="#kontakt" class="btn btn-primary">Porozmawiajmy o projekcie</a>
+        </div>
+
+        <div class="about-visual">
+            <img
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=85"
+                alt="Stanowisko komputerowe do tworzenia stron internetowych"
+                loading="lazy">
+        </div>
+    </div>
+
+    <div class="stats">
+        <div class="stat"><strong>Design</strong><span>Nowoczesny wygląd</span></div>
+        <div class="stat"><strong>Mobile</strong><span>Dopasowanie do telefonu</span></div>
+        <div class="stat"><strong>HTML</strong><span>Przejrzysta struktura</span></div>
+        <div class="stat"><strong>Kontakt</strong><span>Indywidualna wycena</span></div>
+    </div>
+</section>
+
+<div class="separator"><span>✦</span></div>
+
+<!-- OFERTA -->
+
+<section id="oferta">
+    <h2 class="section-title">Co oferuję?</h2>
+    <p class="section-description">Strony internetowe dopasowane do charakteru firmy, marki lub usługi.</p>
+    <div class="section-line"></div>
+
+    <div class="cards">
+        <div class="card">
+            <div class="card-icon">🎨</div>
+            <h3>Nowoczesny design</h3>
+            <p>Estetyczny wygląd dopasowany do charakteru działalności.</p>
+            <ul><li>Kolory marki</li><li>Animacje</li><li>Karty i sekcje</li><li>Przejrzysty układ</li></ul>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📱</div>
+            <h3>Responsywność</h3>
+            <p>Strona może dopasowywać się do różnych rozmiarów ekranów.</p>
+            <ul><li>Komputer</li><li>Laptop</li><li>Tablet</li><li>Telefon</li></ul>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">⚡</div>
+            <h3>Przejrzysty kod</h3>
+            <p>Uporządkowana struktura i logiczna nawigacja.</p>
+            <ul><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Łatwiejsza rozbudowa</li></ul>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📩</div>
+            <h3>Kontakt</h3>
+            <p>Wygodne sposoby skontaktowania się z właścicielem strony.</p>
+            <ul><li>E-mail</li><li>Przycisk kontaktowy</li><li>Dane kontaktowe</li><li>Linki zewnętrzne</li></ul>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🚀</div>
+            <h3>Rozbudowa</h3>
+            <p>Stronę można w przyszłości rozszerzyć o kolejne elementy.</p>
+            <ul><li>Nowe sekcje</li><li>Galerie</li><li>Formularze</li><li>Dodatkowe funkcje</li></ul>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🧩</div>
+            <h3>Indywidualny projekt</h3>
+            <p>Zakres strony ustalany z uwzględnieniem potrzeb klienta.</p>
+            <ul><li>Ustalenie potrzeb</li><li>Dopasowanie wyglądu</li><li>Uzgodnienie funkcji</li><li>Indywidualna wycena</li></ul>
+        </div>
+    </div>
+
+    <!-- GALERIA ZDJĘĆ OFERTY -->
+
+    <div class="photo-gallery">
+        <div class="photo-card">
+            <img
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=85"
+                alt="Analiza i projektowanie strony internetowej"
+                loading="lazy">
+            <div class="photo-caption">
+                <h3>Nowoczesne projekty</h3>
+                <p>Przejrzysty wygląd i dopracowane szczegóły.</p>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <img
+                src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=900&q=85"
+                alt="Stanowisko pracy przy tworzeniu stron"
+                loading="lazy">
+            <div class="photo-caption">
+                <h3>Tworzenie stron</h3>
+                <p>Od pomysłu do gotowego projektu.</p>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <img
+                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=85"
+                alt="Praca nad projektem cyfrowym"
+                loading="lazy">
+            <div class="photo-caption">
+                <h3>Rozwój online</h3>
+                <p>Rozwiązania dopasowane do potrzeb marki.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="separator"><span>✦</span></div>
+
+<!-- WSPÓŁPRACA -->
+
+<section id="wspolpraca">
+    <h2 class="section-title">Jak wygląda współpraca?</h2>
+    <p class="section-description">Proces od pierwszej wiadomości aż do przygotowania strony.</p>
+    <div class="section-line"></div>
+
+    <img
+        class="section-photo"
+        src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=85"
+        alt="Współpraca przy projekcie internetowym"
+        loading="lazy">
+
+    <div class="steps">
+        <div class="step"><div class="step-number">01</div><h3>Kontakt</h3><p>Rozmawiamy o firmie, pomyśle, potrzebach i rodzaju strony.</p></div>
+        <div class="step"><div class="step-number">02</div><h3>Ustalenia</h3><p>Ustalamy wygląd, zakres projektu, funkcje i orientacyjną cenę.</p></div>
+        <div class="step"><div class="step-number">03</div><h3>Tworzenie</h3><p>Przygotowuję projekt na podstawie uzgodnionych wymagań.</p></div>
+        <div class="step"><div class="step-number">04</div><h3>Finalizacja</h3><p>Omawiamy projekt, uzgadniamy poprawki i sposób publikacji.</p></div>
+    </div>
+</section>
+
+<div class="separator"><span>✦</span></div>
+
+<!-- INFORMACJE -->
+
+<section id="informacje">
+    <h2 class="section-title">Poziomy zaawansowania</h2>
+    <p class="section-description">Wybierz zakres strony, który najlepiej odpowiada Twoim potrzebom. Ostateczna wycena zależy od ustaleń.</p>
+    <div class="section-line"></div>
+
+    <div class="cards">
+        <div class="card">
+            <div class="card-icon">🌱</div>
+            <h3>Lekko zaawansowana</h3>
+            <p>Dobra opcja dla prostej wizytówki lub małej działalności.</p>
+            <br><p class="highlight">300–500 zł</p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🔥</div>
+            <h3>Średnio zaawansowana</h3>
+            <p>Więcej sekcji, funkcji, animacji i bardziej rozbudowany projekt.</p>
+            <br><p class="highlight">500–800 zł</p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🚀</div>
+            <h3>Zaawansowana</h3>
+            <p>Rozbudowany projekt z większą liczbą funkcji i indywidualnych elementów.</p>
+            <br><p class="highlight">800–1200 zł</p>
+        </div>
+    </div>
+</section>
+
+<div class="separator"><span>✦</span></div>
+
+<!-- CENNIK -->
+
+<section id="cennik">
+    <h2 class="section-title">Cennik</h2>
+    <p class="section-description">Ceny są orientacyjne. Dokładna cena zależy od zakresu projektu i ustalonych funkcji.</p>
+    <div class="section-line"></div>
+
+    <img
+        class="section-photo"
+        src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1400&q=85"
+        alt="Planowanie i realizacja projektu"
+        loading="lazy">
+
+    <div class="prices">
+        <div class="price-card">
+            <span class="price-badge">START</span>
+            <h3>Lekko zaawansowana</h3>
+            <div class="price">300–500 zł</div>
+            <ul><li>Strona wizytówka</li><li>Podstawowe sekcje</li><li>Kontakt</li><li>Responsywny wygląd</li><li>Podstawowe animacje</li></ul>
+        </div>
+
+        <div class="price-card featured">
+            <span class="price-badge">POPULARNA</span>
+            <h3>Średnio zaawansowana</h3>
+            <div class="price">500–800 zł</div>
+            <ul><li>Więcej sekcji</li><li>Rozbudowany design</li><li>Animacje</li><li>Rozbudowana oferta</li><li>FAQ</li><li>Indywidualne elementy</li></ul>
+        </div>
+
+        <div class="price-card">
+            <span class="price-badge">PRO</span>
+            <h3>Zaawansowana</h3>
+            <div class="price">800–1200 zł</div>
+            <ul><li>Indywidualny projekt</li><li>Duża liczba sekcji</li><li>Rozbudowane animacje</li><li>Dodatkowe funkcje</li><li>Rozbudowana nawigacja</li><li>Możliwość dalszej rozbudowy</li></ul>
+        </div>
+    </div>
+
+    <p style="text-align:center;margin-top:30px;color:#9fb4c8;">
+        Dodatkowe poprawki lub funkcje:
+        <strong style="color:#58dcff;">od 30 zł</strong>,
+        zależnie od zakresu pracy.
+    </p>
+</section>
+
+<div class="separator"><span>✦</span></div>
+
+<!-- FAQ -->
+
+<section id="faq">
+    <h2 class="section-title">Najczęstsze pytania</h2>
+    <div class="section-line"></div>
+
+    <div class="faq">
+        <div class="faq-item"><h3>Czy strona działa na telefonie?</h3><p>Strona może być przygotowana responsywnie, aby dopasowywała się do mniejszych ekranów.</p></div>
+        <div class="faq-item"><h3>Czy mogę później rozbudować stronę?</h3><p>Tak. Można później dodawać kolejne sekcje, funkcje i podstrony.</p></div>
+        <div class="faq-item"><h3>Czy można dodać domenę .pl?</h3><p>Tak. Domena może zostać podłączona do opublikowanej strony. Koszt domeny ustala się osobno.</p></div>
+        <div class="faq-item"><h3>Czy mogę zobaczyć projekt przed publikacją?</h3><p>Tak. Projekt można najpierw przygotować i przedstawić do akceptacji.</p></div>
+        <div class="faq-item"><h3>Czy można zmienić kolory?</h3><p>Tak. Kolorystyka może zostać dopasowana do marki lub preferencji.</p></div>
+        <div class="faq-item"><h3>Ile trwa wykonanie?</h3><p>Czas zależy od zakresu strony, liczby funkcji i liczby poprawek.</p></div>
+    </div>
+</section>
+
+<div class="separator"><span>✦</span></div>
+
+<!-- REGULAMIN -->
+
+<section id="regulamin">
+    <h2 class="section-title">Regulamin</h2>
+    <div class="section-line"></div>
+
+    <div class="rules">
+        <h3>1. Zakres usług</h3>
+        <p>Kropix wykonuje strony internetowe zgodnie z indywidualnymi ustaleniami z klientem.</p>
+
+        <h3>2. Cena</h3>
+        <p>Cena jest ustalana przed rozpoczęciem realizacji i zależy od zakresu projektu oraz dodatkowych funkcji.</p>
+
+        <h3>3. Poprawki</h3>
+        <p>Zakres podstawowych poprawek ustalany jest indywidualnie. Dodatkowe prace mogą być wyceniane osobno.</p>
+
+        <h3>4. Materiały</h3>
+        <p>Klient powinien posiadać prawa do przekazywanych materiałów, takich jak zdjęcia, teksty czy logo.</p>
+
+        <h3>5. Akceptacja</h3>
+        <p>Przed publikacją klient może zapoznać się z przygotowanym projektem i zgłosić uzgodnione poprawki.</p>
+
+        <h3>6. Domena i hosting</h3>
+        <p>Koszty domeny, hostingu i innych usług zewnętrznych nie są automatycznie częścią ceny strony, chyba że ustalono inaczej.</p>
+
+        <h3>7. Dodatkowe prace</h3>
+        <p>Funkcje wykraczające poza ustalony zakres mogą wymagać dodatkowej wyceny.</p>
+
+        <h3>8. Postanowienia końcowe</h3>
+        <p>Szczegółowe warunki konkretnego zlecenia powinny zostać ustalone przed rozpoczęciem prac. Regulamin nie wyłącza praw wynikających z obowiązujących przepisów prawa.</p>
+    </div>
+</section>
+
+<div class="separator"><span>✦</span></div>
+
+<!-- KONTAKT -->
+
+<section id="kontakt">
+    <div class="contact-box">
+        <h2>Masz pomysł na stronę?</h2>
+        <p>Napisz i opowiedz, czego potrzebujesz. Możemy ustalić zakres strony, wygląd oraz orientacyjną cenę.</p>
+
+        <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=nowakquest%40gmail.com&su=Zapytanie%20o%20stron%C4%99%20Kropix&body=Cze%C5%9B%C4%87!%0A%0AChcia%C5%82bym%20zapyta%C4%87%20o%20stworzenie%20strony%20internetowej.%0A%0AM%C3%B3j%20pomys%C5%82%3A%20"
+            class="email"
+            target="_blank"
+            rel="noopener noreferrer">
+            📩 Napisz na nowakquest@gmail.com
+        </a>
+
+        <p style="font-size:13px;margin-top:14px;">
+            Przycisk otwiera tworzenie wiadomości w Gmailu.
+            Możesz też skopiować adres poniżej.
+        </p>
+
+        <div class="copy-row">
+            <span id="emailAddress">nowakquest@gmail.com</span>
+            <button type="button" class="email" style="border:0;cursor:pointer;font:inherit;" onclick="copyKropixEmail()">
+                📋 Kopiuj e-mail
+            </button>
+        </div>
+
+        <p id="copyMessage" aria-live="polite"></p>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 <strong>Kropix</strong> — strony internetowe</p>
+    <p style="margin-top:8px;">Nowoczesny design • Responsywność • Indywidualne projekty</p>
+</footer>
+
+</div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+function copyKropixEmail() {
+    const email = "nowakquest@gmail.com";
+    const message = document.getElementById("copyMessage");
+
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(email)
+            .then(function() {
+                message.textContent = "Adres e-mail skopiowany!";
+            })
+            .catch(function() {
+                showEmailFallback(email, message);
+            });
+    } else {
+        showEmailFallback(email, message);
+    }
+}
+
+function showEmailFallback(email, message) {
+    const field = document.createElement("textarea");
+    field.value = email;
+    field.setAttribute("readonly", "");
+    field.style.position = "absolute";
+    field.style.left = "-9999px";
+
+    document.body.appendChild(field);
+    field.select();
+
+    try {
+        const copied = document.execCommand("copy");
+        message.textContent = copied
+            ? "Adres e-mail skopiowany!"
+            : "Skopiuj adres ręcznie: nowakquest@gmail.com";
+    } catch (error) {
+        message.textContent = "Skopiuj adres ręcznie: nowakquest@gmail.com";
+    }
+
+    field.remove();
+}
+
+const checkbox = document.getElementById("acceptCheckbox");
+const button = document.getElementById("acceptButton");
+
+checkbox.addEventListener("change", function() {
+    button.classList.toggle("active", this.checked);
+});
+
+button.addEventListener("click", function() {
+    if (!checkbox.checked) return;
+
+    document.getElementById("regulaminStart").style.display = "none";
+    document.getElementById("mainPage").style.display = "block";
+
+    window.scrollTo(0, 0);
+});
+</script>
+
+</body>
+</html>
+
